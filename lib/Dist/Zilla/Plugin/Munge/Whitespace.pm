@@ -1,4 +1,4 @@
-use 5.006;  # our
+use 5.006;    # our
 use strict;
 use warnings;
 
@@ -11,41 +11,51 @@ our $VERSION = '0.001000';
 our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
 
 use Moose qw( has with );
-use Dist::Zilla::Role::FileMunger 1.000; # munge_file
+use Dist::Zilla::Role::FileMunger 1.000;    # munge_file
 
 with 'Dist::Zilla::Role::FileMunger';
 
-sub mvp_multivalue_args { qw{ filename match } };
+sub mvp_multivalue_args { qw{ filename match } }
 
-has 'preserve_trailing' => ( is => 'ro', isa => 'Bool', lazy => 1, default => sub { undef } );
-has 'preserve_cr'       => ( is => 'ro', isa => 'Bool', lazy => 1, default => sub { undef } );
-has 'filename' => ( is => 'ro', isa => 'ArrayRef', lazy => 1, default => sub { [] } );
-has 'match' => ( is => 'ro', isa => 'ArrayRef', lazy => 1, default => sub { [] } );
+has 'preserve_trailing' => ( is => 'ro', isa => 'Bool',     lazy => 1, default => sub { undef } );
+has 'preserve_cr'       => ( is => 'ro', isa => 'Bool',     lazy => 1, default => sub { undef } );
+has 'filename'          => ( is => 'ro', isa => 'ArrayRef', lazy => 1, default => sub { [] } );
+has 'match'             => ( is => 'ro', isa => 'ArrayRef', lazy => 1, default => sub { [] } );
 
 has '_match_expr' => ( is => 'ro', isa => 'RegexpRef', lazy_build => 1 );
 
 sub _build__match_expr {
-  my ( $self ) = @_;
-  my ( @matches ) = @{ $self->match };
+  my ($self)    = @_;
+  my (@matches) = @{ $self->match };
   if ( scalar @{ $self->filename } ) {
     unshift @matches, sprintf q[\A(?:%s)\z], join q[|], map quotemeta, @{ $self->filename };
   }
   my $combined = join q[|], @matches;
+  ## no critic RegularExpressions::RequireDotMatchAnything
+  ## no critic RegularExpressions::RequireLineBoundaryMatching
+  ## no critic RegularExpressions::RequireExtendedFormatting
+
   return qr/$combined/;
 }
 
 has '_eol_kill_expr' => ( is => 'ro', isa => 'RegexpRef', lazy_build => 1 );
 
 sub _build__eol_kill_expr {
-  my ( $self )  = @_;
+  my ($self) = @_;
 
-  my $bad_bits  = qr//;
+  ## no critic RegularExpressions::RequireDotMatchAnything
+  ## no critic RegularExpressions::RequireLineBoundaryMatching
+  ## no critic RegularExpressions::RequireExtendedFormatting
+
+  my $bad_bits = qr//;
   my $end_line;
-  if ( not $self->preserve_trailing  ) {
+  if ( not $self->preserve_trailing ) {
+
     # Add horrible spaces to end
     $bad_bits = qr/[\x{20}\x{09}]+/;
   }
   if ( $self->preserve_cr ) {
+
     # preserve CR keeps the CR optional as part of the EOL lookahead.
     $end_line = qr/(?=\x{0D}?\x{0A}|\z)/;
   }
@@ -53,17 +63,19 @@ sub _build__eol_kill_expr {
     # No-preserve CR swallows any CRs directly before the EOL lookahead.
     $end_line = qr/\x{0D}?(?=\x{0A}|\z)/;
   }
-  
+
   return qr/${bad_bits}${end_line}/;
 }
 
 sub _munge_string {
   my ( $self, $name, $string ) = @_;
-  $self->log_debug([ "Stripping trailing whitespace from %s" , $name ]);
-  
+  $self->log_debug( [ "Stripping trailing whitespace from %s", $name ] );
+
   if ( $self->preserve_cr and $self->preserve_trailing ) {
+
     # Noop, both EOL transformations
-  } else {
+  }
+  else {
     my $expr = $self->_eol_kill_expr;
     $string =~ s/$expr//g;
   }
@@ -73,23 +85,26 @@ sub _munge_string {
 sub _munge_from_code {
   my ( $self, $file ) = @_;
   if ( $file->can('code_return_type') and 'text' ne $file->code_return_type ) {
-    $self->log_debug( ['Skipping %s: does not return text', $file->name ] );
+    $self->log_debug( [ 'Skipping %s: does not return text', $file->name ] );
     return;
   }
   $self->log_debug( ['Munging FromCode (prep): %s'], $file->name );
   my $orig_coderef = $file->code();
-  $file->code(sub {
-    $self->log_debug( ['Munging FromCode (write): %s'], $file->name );
-    my $content = $file->$orig_coderef();
-    return $self->_munge_string( $file->name, $content );
-  }); 
-  return; 
+  $file->code(
+    sub {
+      $self->log_debug( ['Munging FromCode (write): %s'], $file->name );
+      my $content = $file->$orig_coderef();
+      return $self->_munge_string( $file->name, $content );
+    }
+  );
+  return;
 }
+
 sub _munge_static {
-  my ( $self , $file ) = @_;
+  my ( $self, $file ) = @_;
   $self->log_debug( ['Munging Static file: %s'], $file->name );
   my $content = $file->content;
-  $file->content( $self->_munge_string( $file->name, $content ));
+  $file->content( $self->_munge_string( $file->name, $content ) );
   return;
 }
 
@@ -97,9 +112,9 @@ sub munge_file {
   my ( $self, $file ) = @_;
   return unless $file->name =~ $self->_match_expr;
   if ( $file->isa('Dist::Zilla::File::FromCode') ) {
-    return $self->_munge_from_code( $file );
+    return $self->_munge_from_code($file);
   }
-  return $self->_munge_static( $file );
+  return $self->_munge_static($file);
 }
 
 __PACKAGE__->meta->make_immutable;
