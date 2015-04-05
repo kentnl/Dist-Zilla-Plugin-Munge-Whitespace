@@ -142,9 +142,9 @@ version 0.001000
 
 =head1 DESCRIPTION
 
-This plugin exists to remove whitespace from selected files.
+This plugin exists to remove white-space from selected files.
 
-In its default mode of operation, it will strip trailing whitespace from the selected files in the following forms:
+In its default mode of operation, it will strip trailing white-space from the selected files in the following forms:
 
 =over 4
 
