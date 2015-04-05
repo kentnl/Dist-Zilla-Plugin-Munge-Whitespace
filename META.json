@@ -56,6 +56,7 @@
             "Dist::Zilla::Plugin::MetaTests" : "0",
             "Dist::Zilla::Plugin::MetaYAML" : "0",
             "Dist::Zilla::Plugin::MinimumPerl" : "0",
+            "Dist::Zilla::Plugin::Munge::Whitespace" : "0",
             "Dist::Zilla::Plugin::PodCoverageTests" : "0",
             "Dist::Zilla::Plugin::PodSyntaxTests" : "0",
             "Dist::Zilla::Plugin::PodWeaver" : "0",
@@ -750,6 +751,21 @@
             },
             "name" : "@Author::KENTNL/::Role::BundleDeps",
             "version" : "5.034"
+         },
+         {
+            "class" : "Dist::Zilla::Plugin::Munge::Whitespace",
+            "config" : {
+               "Dist::Zilla::Plugin::Munge::Whitespace" : {
+                  "filename" : [
+                     "LICENSE"
+                  ],
+                  "match" : [
+                     "lib/.*\\.pm"
+                  ]
+               }
+            },
+            "name" : "Munge::Whitespace",
+            "version" : "0.001000"
          },
          {
             "class" : "Dist::Zilla::Plugin::Prereqs",
