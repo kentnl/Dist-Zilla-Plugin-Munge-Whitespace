@@ -98,6 +98,7 @@
          },
          "requires" : {
             "Dist::Zilla::Role::FileMunger" : "1.000",
+            "Dist::Zilla::Util::ConfigDumper" : "0",
             "Moose" : "0",
             "perl" : "5.006",
             "strict" : "0",
@@ -742,6 +743,16 @@
          },
          {
             "class" : "Dist::Zilla::Plugin::Munge::Whitespace",
+            "config" : {
+               "Dist::Zilla::Plugin::Munge::Whitespace" : {
+                  "filename" : [
+                     "LICENSE"
+                  ],
+                  "match" : [
+                     "lib/.*\\.pm"
+                  ]
+               }
+            },
             "name" : "Munge::Whitespace",
             "version" : "0.001000"
          },

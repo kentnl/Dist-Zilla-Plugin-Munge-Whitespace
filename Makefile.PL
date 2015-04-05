@@ -19,6 +19,7 @@ my %WriteMakefileArgs = (
   "NAME" => "Dist::Zilla::Plugin::Munge::Whitespace",
   "PREREQ_PM" => {
     "Dist::Zilla::Role::FileMunger" => "1.000",
+    "Dist::Zilla::Util::ConfigDumper" => 0,
     "Moose" => 0,
     "strict" => 0,
     "warnings" => 0
@@ -37,6 +38,7 @@ my %WriteMakefileArgs = (
 
 my %FallbackPrereqs = (
   "Dist::Zilla::Role::FileMunger" => "1.000",
+  "Dist::Zilla::Util::ConfigDumper" => 0,
   "ExtUtils::MakeMaker" => 0,
   "File::Spec" => 0,
   "Moose" => 0,
