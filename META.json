@@ -12,7 +12,7 @@
       "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
       "version" : "2"
    },
-   "name" : "Dist-Zilla-Plugin-Munge-WhiteSpace",
+   "name" : "Dist-Zilla-Plugin-Munge-Whitespace",
    "prereqs" : {
       "configure" : {
          "recommends" : {
@@ -56,7 +56,7 @@
             "Dist::Zilla::Plugin::MetaTests" : "0",
             "Dist::Zilla::Plugin::MetaYAML" : "0",
             "Dist::Zilla::Plugin::MinimumPerl" : "0",
-            "Dist::Zilla::Plugin::Munge::WhiteSpace" : "0",
+            "Dist::Zilla::Plugin::Munge::Whitespace" : "0",
             "Dist::Zilla::Plugin::PodCoverageTests" : "0",
             "Dist::Zilla::Plugin::PodSyntaxTests" : "0",
             "Dist::Zilla::Plugin::PodWeaver" : "0",
@@ -119,8 +119,8 @@
       }
    },
    "provides" : {
-      "Dist::Zilla::Plugin::Munge::WhiteSpace" : {
-         "file" : "lib/Dist/Zilla/Plugin/Munge/WhiteSpace.pm",
+      "Dist::Zilla::Plugin::Munge::Whitespace" : {
+         "file" : "lib/Dist/Zilla/Plugin/Munge/Whitespace.pm",
          "version" : "0.001000"
       }
    },
@@ -331,7 +331,7 @@
             "config" : {
                "Dist::Zilla::Plugin::Test::Compile::PerFile" : {
                   "file" : [
-                     "lib/Dist/Zilla/Plugin/Munge/WhiteSpace.pm"
+                     "lib/Dist/Zilla/Plugin/Munge/Whitespace.pm"
                   ],
                   "path_translator" : "base64_filter",
                   "prefix" : "t/00-compile",
@@ -751,8 +751,8 @@
             "version" : "5.034"
          },
          {
-            "class" : "Dist::Zilla::Plugin::Munge::WhiteSpace",
-            "name" : "Munge::WhiteSpace",
+            "class" : "Dist::Zilla::Plugin::Munge::Whitespace",
+            "name" : "Munge::Whitespace",
             "version" : "0.001000"
          },
          {

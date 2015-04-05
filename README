@@ -1,4 +1,4 @@
-Dist::Zilla::Plugin::Munge::WhiteSpace
+Dist::Zilla::Plugin::Munge::Whitespace
 
 This plugin exists to remove whitespace from selected files.
 

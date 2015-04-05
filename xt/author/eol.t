@@ -7,8 +7,8 @@ use Test::More 0.88;
 use Test::EOL;
 
 my @files = (
-    'lib/Dist/Zilla/Plugin/Munge/WhiteSpace.pm',
-    't/00-compile/lib_Dist_Zilla_Plugin_Munge_WhiteSpace_pm.t',
+    'lib/Dist/Zilla/Plugin/Munge/Whitespace.pm',
+    't/00-compile/lib_Dist_Zilla_Plugin_Munge_Whitespace_pm.t',
     't/00-report-prereqs.dd',
     't/00-report-prereqs.t'
 );

@@ -12,11 +12,11 @@ my %WriteMakefileArgs = (
   "CONFIGURE_REQUIRES" => {
     "ExtUtils::MakeMaker" => 0
   },
-  "DISTNAME" => "Dist-Zilla-Plugin-Munge-WhiteSpace",
+  "DISTNAME" => "Dist-Zilla-Plugin-Munge-Whitespace",
   "EXE_FILES" => [],
   "LICENSE" => "perl",
   "MIN_PERL_VERSION" => "5.006",
-  "NAME" => "Dist::Zilla::Plugin::Munge::WhiteSpace",
+  "NAME" => "Dist::Zilla::Plugin::Munge::Whitespace",
   "PREREQ_PM" => {
     "Dist::Zilla::Role::FileMunger" => "1.000",
     "Moose" => 0,

@@ -16,10 +16,10 @@ license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
   version: '1.4'
-name: Dist-Zilla-Plugin-Munge-WhiteSpace
+name: Dist-Zilla-Plugin-Munge-Whitespace
 provides:
-  Dist::Zilla::Plugin::Munge::WhiteSpace:
-    file: lib/Dist/Zilla/Plugin/Munge/WhiteSpace.pm
+  Dist::Zilla::Plugin::Munge::Whitespace:
+    file: lib/Dist/Zilla/Plugin/Munge/Whitespace.pm
     version: '0.001000'
 recommends:
   Moose: '2.000'
@@ -189,7 +189,7 @@ x_Dist_Zilla:
       config:
         Dist::Zilla::Plugin::Test::Compile::PerFile:
           file:
-            - lib/Dist/Zilla/Plugin/Munge/WhiteSpace.pm
+            - lib/Dist/Zilla/Plugin/Munge/Whitespace.pm
           path_translator: base64_filter
           prefix: t/00-compile
           skip: []
@@ -508,8 +508,8 @@ x_Dist_Zilla:
       name: '@Author::KENTNL/::Role::BundleDeps'
       version: '5.034'
     -
-      class: Dist::Zilla::Plugin::Munge::WhiteSpace
-      name: Munge::WhiteSpace
+      class: Dist::Zilla::Plugin::Munge::Whitespace
+      name: Munge::Whitespace
       version: '0.001000'
     -
       class: Dist::Zilla::Plugin::Prereqs

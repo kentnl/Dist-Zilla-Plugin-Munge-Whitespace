@@ -2,7 +2,7 @@ use 5.006;  # our
 use strict;
 use warnings;
 
-package Dist::Zilla::Plugin::Munge::WhiteSpace;
+package Dist::Zilla::Plugin::Munge::Whitespace;
 
 our $VERSION = '0.001000';
 
@@ -115,7 +115,7 @@ __END__
 
 =head1 NAME
 
-Dist::Zilla::Plugin::Munge::WhiteSpace - Strip superfluous spaces from pesky files.
+Dist::Zilla::Plugin::Munge::Whitespace - Strip superfluous spaces from pesky files.
 
 =head1 VERSION
 
