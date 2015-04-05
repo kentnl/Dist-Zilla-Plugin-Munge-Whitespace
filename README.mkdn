@@ -4,7 +4,7 @@ Dist::Zilla::Plugin::Munge::Whitespace - Strip superfluous spaces from pesky fil
 
 # VERSION
 
-version 0.001000
+version 0.001001
 
 # DESCRIPTION
 
