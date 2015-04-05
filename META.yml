@@ -37,6 +37,13 @@ x_Dist_Zilla:
     version: '5.021009'
   plugins:
     -
+      class: Dist::Zilla::Plugin::Bootstrap::lib
+      config:
+        Dist::Zilla::Role::Bootstrap:
+          try_built: ~
+      name: Bootstrap::lib
+      version: '1.001000'
+    -
       class: Dist::Zilla::Plugin::MetaConfig
       name: '@Author::KENTNL/MetaConfig'
       version: '5.034'
@@ -500,6 +507,10 @@ x_Dist_Zilla:
           type: requires
       name: '@Author::KENTNL/::Role::BundleDeps'
       version: '5.034'
+    -
+      class: Dist::Zilla::Plugin::Munge::WhiteSpace
+      name: Munge::WhiteSpace
+      version: '0.001000'
     -
       class: Dist::Zilla::Plugin::Prereqs
       config:

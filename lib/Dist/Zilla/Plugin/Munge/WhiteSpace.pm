@@ -59,7 +59,7 @@ sub _build__eol_kill_expr {
 
 sub _munge_string {
   my ( $self, $name, $string ) = @_;
-  $self->log_debug([ "Stripping trailing whitespace from %s" , $file->name ]);
+  $self->log_debug([ "Stripping trailing whitespace from %s" , $name ]);
   
   if ( $self->preserve_cr and $self->preserve_trailing ) {
     # Noop, both EOL transformations
