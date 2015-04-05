@@ -77,6 +77,10 @@ sub _munge_string {
     # Noop, both EOL transformations
   }
   else {
+    ## no critic (RegularExpressions::RequireDotMatchAnything)
+    ## no critic (RegularExpressions::RequireLineBoundaryMatching)
+    ## no critic (RegularExpressions::RequireExtendedFormatting)
+
     my $expr = $self->_eol_kill_expr;
     $string =~ s/$expr//g;
   }
