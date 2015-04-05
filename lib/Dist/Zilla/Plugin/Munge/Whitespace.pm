@@ -172,6 +172,23 @@ In its default mode of operation, it will strip trailing white-space from the se
   preserve_trailing = 1 ; Don't nom trailing \s and \t
   preserve_cr       = 1 ; Don't turn \r\n into \n
 
+Note: This is just a standard munger, and will munge any files it gets told to munge.
+
+It will not however write files out anywhere or make your source tree all pretty.
+
+It will however scrub the files you have on their way out to your dist, or on their way out
+to any other plugins you might have, like L<< C<CopyFromRelease>|Dist::Zilla::Plugin::CopyFilesFromRelease >>
+or L<< C<CopyFromBuild>|Dist::Zilla::Plugin::CopyFilesFromBuild >>, and a smart player can probably combine
+parts of this with either of those and have their dist automatically cleaned up for them when they run C<dzil build>.
+
+They might also enjoy the luxurious benefits of having sensitive whitespace accidentally sent to a magical wonderland,
+which breaks their code, or have a glorious race condition where something important they were working on and hadn't
+gotten committed to git yet get eaten due to the file on disk getting updated, and their editor duefuly rejoicing
+and prompting to reload their file, which may make them respond to the pavlovian conditioning to click "OK",
+followed by much wailing and gnashing of teeth.
+
+Please enjoy our quality product, from the team at FootGuns Inc.
+
 =head1 TODO
 
 =over 4
