@@ -1,13 +1,14 @@
 Dist::Zilla::Plugin::Munge::Whitespace
 
-This plugin exists to remove white-space from selected files.
+This plugin can be used with Dist::Zilla to remove remove white-space
+from selected files.
 
 In its default mode of operation, it will strip trailing white-space
 from the selected files in the following forms:
 
 *   0x20: The literal space character
 
-*   0x9: The literal tab character
+*   0x9: The literal tab character, otherwise known as "\t"
 
 *   0xD: The Carriage Return character, otherwise known as "\r" ( But
     only immediately before a \n )

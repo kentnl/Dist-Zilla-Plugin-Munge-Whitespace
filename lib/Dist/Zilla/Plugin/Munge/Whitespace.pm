@@ -145,7 +145,7 @@ version 0.001000
 
 =head1 DESCRIPTION
 
-This plugin exists to remove white-space from selected files.
+This plugin can be used with Dist::Zilla to remove remove white-space from selected files.
 
 In its default mode of operation, it will strip trailing white-space from the selected files in the following forms:
 
@@ -153,11 +153,24 @@ In its default mode of operation, it will strip trailing white-space from the se
 
 =item * C<0x20>: The literal space character
 
-=item * C<0x9>: The literal tab character
+=item * C<0x9>: The literal tab character, otherwise known as C<\t>
 
 =item * C<0xD>: The Carriage Return character, otherwise known as C<\r> ( But only immediately before a \n )
 
 =back
+
+=head1 USAGE
+
+  [Munge::Whitespace]
+  filename = LICENSE  ; *Cough*: https://github.com/Perl-Toolchain-Gang/Software-License/pull/30
+  filename = Changes
+  match    = lib/*.pm
+
+  ; Power User Options
+  ;          Note: turning both of these options on at present would be idiotic.
+  ;          unless you like applying substituion regex to whole files just to duplicate a string
+  preserve_trailing = 1 ; Don't nom trailing \s and \t
+  preserve_cr       = 1 ; Don't turn \r\n into \n
 
 =head1 AUTHOR
 
