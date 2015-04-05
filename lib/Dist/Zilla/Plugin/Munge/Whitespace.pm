@@ -15,20 +15,24 @@ use Dist::Zilla::Role::FileMunger 1.000;    # munge_file
 
 with 'Dist::Zilla::Role::FileMunger';
 
-sub mvp_multivalue_args { qw{ filename match } }
+sub mvp_multivalue_args { return qw{ filename match } }
 
 has 'preserve_trailing' => ( is => 'ro', isa => 'Bool',     lazy => 1, default => sub { undef } );
 has 'preserve_cr'       => ( is => 'ro', isa => 'Bool',     lazy => 1, default => sub { undef } );
 has 'filename'          => ( is => 'ro', isa => 'ArrayRef', lazy => 1, default => sub { [] } );
 has 'match'             => ( is => 'ro', isa => 'ArrayRef', lazy => 1, default => sub { [] } );
 
-has '_match_expr' => ( is => 'ro', isa => 'RegexpRef', lazy_build => 1 );
+has '_match_expr'    => ( is => 'ro', isa => 'RegexpRef', lazy_build => 1 );
+has '_eol_kill_expr' => ( is => 'ro', isa => 'RegexpRef', lazy_build => 1 );
+
+__PACKAGE__->meta->make_immutable;
+no Moose;
 
 sub _build__match_expr {
   my ($self)    = @_;
   my (@matches) = @{ $self->match };
   if ( scalar @{ $self->filename } ) {
-    unshift @matches, sprintf q[\A(?:%s)\z], join q[|], map quotemeta, @{ $self->filename };
+    unshift @matches, sprintf q[\A(?:%s)\z], join q[|], map { quotemeta } @{ $self->filename };
   }
   my $combined = join q[|], @matches;
 
@@ -38,8 +42,6 @@ sub _build__match_expr {
 
   return qr/$combined/;
 }
-
-has '_eol_kill_expr' => ( is => 'ro', isa => 'RegexpRef', lazy_build => 1 );
 
 sub _build__eol_kill_expr {
   my ($self) = @_;
@@ -70,7 +72,7 @@ sub _build__eol_kill_expr {
 
 sub _munge_string {
   my ( $self, $name, $string ) = @_;
-  $self->log_debug( [ "Stripping trailing whitespace from %s", $name ] );
+  $self->log_debug( [ 'Stripping trailing whitespace from %s', $name ] );
 
   if ( $self->preserve_cr and $self->preserve_trailing ) {
 
@@ -93,11 +95,11 @@ sub _munge_from_code {
     $self->log_debug( [ 'Skipping %s: does not return text', $file->name ] );
     return;
   }
-  $self->log_debug( ['Munging FromCode (prep): %s'], $file->name );
+  $self->log_debug( [ 'Munging FromCode (prep): %s', $file->name ] );
   my $orig_coderef = $file->code();
   $file->code(
     sub {
-      $self->log_debug( ['Munging FromCode (write): %s'], $file->name );
+      $self->log_debug( [ 'Munging FromCode (write): %s', $file->name ] );
       my $content = $file->$orig_coderef();
       return $self->_munge_string( $file->name, $content );
     }
@@ -107,7 +109,7 @@ sub _munge_from_code {
 
 sub _munge_static {
   my ( $self, $file ) = @_;
-  $self->log_debug( ['Munging Static file: %s'], $file->name );
+  $self->log_debug( [ 'Munging Static file: %s', $file->name ] );
   my $content = $file->content;
   $file->content( $self->_munge_string( $file->name, $content ) );
   return;
@@ -121,9 +123,6 @@ sub munge_file {
   }
   return $self->_munge_static($file);
 }
-
-__PACKAGE__->meta->make_immutable;
-no Moose;
 
 1;
 
@@ -153,7 +152,7 @@ In its default mode of operation, it will strip trailing whitespace from the sel
 
 =item * C<0x9>: The literal tab character
 
-=item * C<0xD>: The Carriage Return character, otherwise known as C<\r>
+=item * C<0xD>: The Carriage Return character, otherwise known as C<\r> ( But only immediately before a \n )
 
 =back
 

@@ -9,7 +9,8 @@ the selected files in the following forms:
 
 *   0x9: The literal tab character
 
-*   0xD: The Carriage Return character, otherwise known as "\r"
+*   0xD: The Carriage Return character, otherwise known as "\r" ( But
+    only immediately before a \n )
 
 INSTALLATION
 
