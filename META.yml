@@ -30,6 +30,10 @@ requires:
   perl: '5.006'
   strict: '0'
   warnings: '0'
+resources:
+  bugtracker: https://github.com/kentnl/Dist-Zilla-Plugin-Munge-Whitespace/issues
+  homepage: https://github.com/kentnl/Dist-Zilla-Plugin-Munge-Whitespace
+  repository: https://github.com/kentnl/Dist-Zilla-Plugin-Munge-Whitespace.git
 version: '0.001000'
 x_BuiltWith:
   external_file: misc/built_with.json
@@ -501,16 +505,6 @@ x_Dist_Zilla:
           type: requires
       name: '@Author::KENTNL/::Role::BundleDeps'
       version: '5.034'
-    -
-      class: Dist::Zilla::Plugin::Munge::Whitespace
-      config:
-        Dist::Zilla::Plugin::Munge::Whitespace:
-          filename:
-            - LICENSE
-          match:
-            - lib/.*\.pm
-      name: Munge::Whitespace
-      version: '0.001000'
     -
       class: Dist::Zilla::Plugin::Prereqs
       config:

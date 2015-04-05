@@ -56,7 +56,6 @@
             "Dist::Zilla::Plugin::MetaTests" : "0",
             "Dist::Zilla::Plugin::MetaYAML" : "0",
             "Dist::Zilla::Plugin::MinimumPerl" : "0",
-            "Dist::Zilla::Plugin::Munge::Whitespace" : "0",
             "Dist::Zilla::Plugin::PodCoverageTests" : "0",
             "Dist::Zilla::Plugin::PodSyntaxTests" : "0",
             "Dist::Zilla::Plugin::PodWeaver" : "0",
@@ -126,6 +125,17 @@
       }
    },
    "release_status" : "stable",
+   "resources" : {
+      "bugtracker" : {
+         "web" : "https://github.com/kentnl/Dist-Zilla-Plugin-Munge-Whitespace/issues"
+      },
+      "homepage" : "https://github.com/kentnl/Dist-Zilla-Plugin-Munge-Whitespace",
+      "repository" : {
+         "type" : "git",
+         "url" : "https://github.com/kentnl/Dist-Zilla-Plugin-Munge-Whitespace.git",
+         "web" : "https://github.com/kentnl/Dist-Zilla-Plugin-Munge-Whitespace"
+      }
+   },
    "version" : "0.001000",
    "x_BuiltWith" : {
       "external_file" : "misc/built_with.json"
@@ -740,21 +750,6 @@
             },
             "name" : "@Author::KENTNL/::Role::BundleDeps",
             "version" : "5.034"
-         },
-         {
-            "class" : "Dist::Zilla::Plugin::Munge::Whitespace",
-            "config" : {
-               "Dist::Zilla::Plugin::Munge::Whitespace" : {
-                  "filename" : [
-                     "LICENSE"
-                  ],
-                  "match" : [
-                     "lib/.*\\.pm"
-                  ]
-               }
-            },
-            "name" : "Munge::Whitespace",
-            "version" : "0.001000"
          },
          {
             "class" : "Dist::Zilla::Plugin::Prereqs",
