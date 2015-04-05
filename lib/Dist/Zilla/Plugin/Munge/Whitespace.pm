@@ -16,8 +16,6 @@ use Dist::Zilla::Util::ConfigDumper qw( config_dumper );
 
 with 'Dist::Zilla::Role::FileMunger';
 
-sub mvp_multivalue_args { return qw{ filename match } }
-
 has 'preserve_trailing' => ( is => 'ro', isa => 'Bool',     lazy => 1, default => sub { undef } );
 has 'preserve_cr'       => ( is => 'ro', isa => 'Bool',     lazy => 1, default => sub { undef } );
 has 'filename'          => ( is => 'ro', isa => 'ArrayRef', lazy => 1, default => sub { [] } );
@@ -30,6 +28,23 @@ around dump_config => config_dumper( __PACKAGE__, { attrs => [qw( preserve_trail
 
 __PACKAGE__->meta->make_immutable;
 no Moose;
+
+
+
+
+
+
+
+sub mvp_multivalue_args { return qw{ filename match } }
+
+sub munge_file {
+  my ( $self, $file ) = @_;
+  return unless $file->name =~ $self->_match_expr;
+  if ( $file->isa('Dist::Zilla::File::FromCode') ) {
+    return $self->_munge_from_code($file);
+  }
+  return $self->_munge_static($file);
+}
 
 sub _build__match_expr {
   my ($self)    = @_;
@@ -118,15 +133,6 @@ sub _munge_static {
   return;
 }
 
-sub munge_file {
-  my ( $self, $file ) = @_;
-  return unless $file->name =~ $self->_match_expr;
-  if ( $file->isa('Dist::Zilla::File::FromCode') ) {
-    return $self->_munge_from_code($file);
-  }
-  return $self->_munge_static($file);
-}
-
 1;
 
 __END__
@@ -158,6 +164,10 @@ In its default mode of operation, it will strip trailing white-space from the se
 =item * C<0xD>: The Carriage Return character, otherwise known as C<\r> ( But only immediately before a \n )
 
 =back
+
+=for comment nobody cares
+
+=for Pod::Coverage mvp_multivalue_args munge_file
 
 =head1 USAGE
 
