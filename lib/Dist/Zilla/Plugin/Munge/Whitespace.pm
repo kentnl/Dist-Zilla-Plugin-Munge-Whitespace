@@ -181,9 +181,9 @@ to any other plugins you might have, like L<< C<CopyFromRelease>|Dist::Zilla::Pl
 or L<< C<CopyFromBuild>|Dist::Zilla::Plugin::CopyFilesFromBuild >>, and a smart player can probably combine
 parts of this with either of those and have their dist automatically cleaned up for them when they run C<dzil build>.
 
-They might also enjoy the luxurious benefits of having sensitive whitespace accidentally sent to a magical wonderland,
+They might also enjoy the luxurious benefits of having sensitive white-space accidentally sent to a magical wonderland,
 which breaks their code, or have a glorious race condition where something important they were working on and hadn't
-gotten committed to git yet get eaten due to the file on disk getting updated, and their editor duefuly rejoicing
+gotten committed to git yet get eaten due to the file on disk getting updated, and their editor duefully rejoicing
 and prompting to reload their file, which may make them respond to the pavlovian conditioning to click "OK",
 followed by much wailing and gnashing of teeth.
 
@@ -201,7 +201,7 @@ I figured I could, but C<YKW,FI>.
 
 Would be useful. But dogfood for now.
 
-=item * indentation normalisation
+=item * indentation normalization
 
 Sounds like work.
 
