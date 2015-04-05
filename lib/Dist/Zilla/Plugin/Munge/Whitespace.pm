@@ -172,6 +172,24 @@ In its default mode of operation, it will strip trailing white-space from the se
   preserve_trailing = 1 ; Don't nom trailing \s and \t
   preserve_cr       = 1 ; Don't turn \r\n into \n
 
+=head1 TODO
+
+=over 4
+
+=item * C<finder> support.
+
+I figured I could, but C<YKW,FI>.
+
+=item * tests
+
+Would be useful. But dogfood for now.
+
+=item * indentation normalisation
+
+Sounds like work.
+
+=back
+
 =head1 AUTHOR
 
 Kent Fredric <kentnl@cpan.org>
