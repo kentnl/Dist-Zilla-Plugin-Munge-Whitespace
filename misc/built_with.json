@@ -2,6 +2,7 @@
    "modules" : {
       "CPAN::Meta" : "2.150001",
       "Dist::Zilla" : "5.034",
+      "Dist::Zilla::App::Command::bakeini" : "0.002000",
       "Dist::Zilla::Plugin::Author::KENTNL::RecommendFixes" : "0.004002",
       "Dist::Zilla::Plugin::Author::KENTNL::TravisCI" : "0.001002",
       "Dist::Zilla::Plugin::Authority" : "1.009",
@@ -52,7 +53,6 @@
       "Dist::Zilla::Plugin::Twitter" : "0.026",
       "Dist::Zilla::Plugin::UploadToCPAN" : "5.034",
       "Dist::Zilla::PluginBundle::Author::KENTNL" : "2.024001",
-      "Dist::Zilla::PluginBundle::Author::KENTNL::Lite" : "2.001000",
       "Dist::Zilla::Role::FileMunger" : "5.034",
       "ExtUtils::MakeMaker" : "7.04",
       "File::Spec" : "3.53",
