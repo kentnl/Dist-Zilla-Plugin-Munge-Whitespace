@@ -31,9 +31,10 @@ sub _build__match_expr {
     unshift @matches, sprintf q[\A(?:%s)\z], join q[|], map quotemeta, @{ $self->filename };
   }
   my $combined = join q[|], @matches;
-  ## no critic RegularExpressions::RequireDotMatchAnything
-  ## no critic RegularExpressions::RequireLineBoundaryMatching
-  ## no critic RegularExpressions::RequireExtendedFormatting
+ 
+  ## no critic (RegularExpressions::RequireDotMatchAnything)
+  ## no critic (RegularExpressions::RequireLineBoundaryMatching)
+  ## no critic (RegularExpressions::RequireExtendedFormatting)
 
   return qr/$combined/;
 }
@@ -43,9 +44,9 @@ has '_eol_kill_expr' => ( is => 'ro', isa => 'RegexpRef', lazy_build => 1 );
 sub _build__eol_kill_expr {
   my ($self) = @_;
 
-  ## no critic RegularExpressions::RequireDotMatchAnything
-  ## no critic RegularExpressions::RequireLineBoundaryMatching
-  ## no critic RegularExpressions::RequireExtendedFormatting
+  ## no critic (RegularExpressions::RequireDotMatchAnything)
+  ## no critic (RegularExpressions::RequireLineBoundaryMatching)
+  ## no critic (RegularExpressions::RequireExtendedFormatting)
 
   my $bad_bits = qr//;
   my $end_line;
