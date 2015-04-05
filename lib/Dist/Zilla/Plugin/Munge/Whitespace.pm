@@ -102,7 +102,7 @@ sub _munge_from_code {
       $self->log_debug( [ 'Munging FromCode (write): %s', $file->name ] );
       my $content = $file->$orig_coderef();
       return $self->_munge_string( $file->name, $content );
-    }
+    },
   );
   return;
 }
