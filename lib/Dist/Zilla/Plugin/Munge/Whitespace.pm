@@ -183,7 +183,7 @@ parts of this with either of those and have their dist automatically cleaned up 
 
 They might also enjoy the luxurious benefits of having sensitive white-space accidentally sent to a magical wonderland,
 which breaks their code, or have a glorious race condition where something important they were working on and hadn't
-gotten committed to git yet get eaten due to the file on disk getting updated, and their editor duefully rejoicing
+gotten committed to git yet get eaten due to the file on disk getting updated, and their editor dutifully rejoicing
 and prompting to reload their file, which may make them respond to the pavlovian conditioning to click "OK",
 followed by much wailing and gnashing of teeth.
 
