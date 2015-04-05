@@ -31,7 +31,7 @@ sub _build__match_expr {
     unshift @matches, sprintf q[\A(?:%s)\z], join q[|], map quotemeta, @{ $self->filename };
   }
   my $combined = join q[|], @matches;
- 
+
   ## no critic (RegularExpressions::RequireDotMatchAnything)
   ## no critic (RegularExpressions::RequireLineBoundaryMatching)
   ## no critic (RegularExpressions::RequireExtendedFormatting)
