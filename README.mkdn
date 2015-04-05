@@ -22,10 +22,10 @@ In its default mode of operation, it will strip trailing white-space from the se
     filename = LICENSE  ; *Cough*: https://github.com/Perl-Toolchain-Gang/Software-License/pull/30
     filename = Changes
     match    = lib/*.pm
-    
+
     ; Power User Options
     ;          Note: turning both of these options on at present would be idiotic.
-    ;          unless you like applying substituion regex to whole files just to duplicate a string             
+    ;          unless you like applying substituion regex to whole files just to duplicate a string
     preserve_trailing = 1 ; Don't nom trailing \s and \t
     preserve_cr       = 1 ; Don't turn \r\n into \n
 
