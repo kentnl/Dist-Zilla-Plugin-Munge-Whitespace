@@ -4,7 +4,7 @@ use warnings;
 
 package Dist::Zilla::Plugin::Munge::Whitespace;
 
-our $VERSION = '0.001000';
+our $VERSION = '0.001001';
 
 # ABSTRACT: Strip superfluous spaces from pesky files.
 
@@ -147,7 +147,7 @@ Dist::Zilla::Plugin::Munge::Whitespace - Strip superfluous spaces from pesky fil
 
 =head1 VERSION
 
-version 0.001000
+version 0.001001
 
 =head1 DESCRIPTION
 
