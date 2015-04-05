@@ -12,6 +12,10 @@ README
 dist.ini
 lib/Dist/Zilla/Plugin/Munge/Whitespace.pm
 maint/perlcritic.rc.gen.pl
+misc/Changes.deps
+misc/Changes.deps.all
+misc/Changes.deps.dev
+misc/Changes.deps.opt
 misc/built_with.json
 misc/perlcritic.deps
 perlcritic.rc
