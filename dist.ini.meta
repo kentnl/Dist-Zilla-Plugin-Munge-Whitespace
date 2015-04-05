@@ -22,5 +22,6 @@ twitter_extra_hash_tags = #distzilla
 
 [Munge::Whitespace]
 filename = LICENSE
+match    = lib/.*\.pm
 [Prereqs]
 
