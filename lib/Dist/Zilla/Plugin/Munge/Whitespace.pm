@@ -12,7 +12,6 @@ our $VERSION = '0.001001';
 
 use Moose qw( has with around );
 use Dist::Zilla::Role::FileMunger 1.000;    # munge_file
-use Dist::Zilla::Util::ConfigDumper qw( config_dumper );
 
 with 'Dist::Zilla::Role::FileMunger';
 
@@ -24,7 +23,21 @@ has 'match'             => ( is => 'ro', isa => 'ArrayRef', lazy => 1, default =
 has '_match_expr'    => ( is => 'ro', isa => 'RegexpRef', lazy_build => 1 );
 has '_eol_kill_expr' => ( is => 'ro', isa => 'RegexpRef', lazy_build => 1 );
 
-around dump_config => config_dumper( __PACKAGE__, { attrs => [qw( preserve_trailing preserve_cr filename match )] } );
+around dump_config => sub {
+  my ( $orig, $self, @args ) = @_;
+  my $config = $self->$orig(@args);
+  my $localconf = $config->{ +__PACKAGE__ } = {};
+
+  for my $attr (qw( preserve_trailing preserve_cr filename match )) {
+    next unless $self->meta->find_attribute_by_name($attr)->has_value($self);
+    $localconf->{$attr} = $self->can($attr)->($self);
+  }
+
+  $localconf->{ q[$] . __PACKAGE__ . '::VERSION' } = $VERSION
+    unless __PACKAGE__ eq ref $self;
+
+  return $config;
+};
 
 __PACKAGE__->meta->make_immutable;
 no Moose;
