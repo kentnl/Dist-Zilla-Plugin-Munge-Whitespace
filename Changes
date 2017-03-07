@@ -1,6 +1,8 @@
 Release history for Dist-Zilla-Plugin-Munge-Whitespace
 
 {{$NEXT}}
+
+0.001001 2017-03-07T14:54:22Z a9be5e5
  - Bugfix: Avoid test failures with -Ddefault_inc_excludes_dot
  - Drop use of ConfigDumper util
 
