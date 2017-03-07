@@ -20,7 +20,7 @@ name: Dist-Zilla-Plugin-Munge-Whitespace
 provides:
   Dist::Zilla::Plugin::Munge::Whitespace:
     file: lib/Dist/Zilla/Plugin/Munge/Whitespace.pm
-    version: '0.001001'
+    version: '0.001002'
 recommends:
   Moose: '2.000'
 requires:
@@ -33,4 +33,4 @@ resources:
   bugtracker: https://github.com/kentnl/Dist-Zilla-Plugin-Munge-Whitespace/issues
   homepage: https://github.com/kentnl/Dist-Zilla-Plugin-Munge-Whitespace
   repository: https://github.com/kentnl/Dist-Zilla-Plugin-Munge-Whitespace.git
-version: '0.001001'
+version: '0.001002'
